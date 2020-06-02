@@ -1,0 +1,62 @@
+.top-info{
+	background: none;
+	display: inline-block;
+	border-bottom: solid 1px white;
+}
+.top-info b{
+	display: inline-block;
+	color: white;
+}
+.-index{
+	font-size: 11px;
+}
+.api-name-exchange{
+	font-size: 15px;
+}
+.simple-chart-line{
+	margin-left: 2px;
+}
+.inf-chart{
+	display: inline-block;
+	margin-right: 30px;
+}
+.integer-api{
+	font-size: 15px;
+	display: inline-block;
+	float: left;
+}
+.small-api div {
+	font-size: 7.5px;
+	margin: -4px 0;
+}
+.small-api{
+	display: inline-block;
+	margin-left: 4px;
+	margin-top: 6px;
+	float: left;
+}
+.wtf{
+	color: white;
+}
+.change-scale{
+	float: left;
+	margin-left: 10px;
+	margin-top: 6px;	
+	display: inline-block;
+}
+.change-scale div {
+	font-size: 7.5px;
+	margin: -4px 0;
+}
+.chart-small{
+	width: 50px;
+	height: 20px;
+	background: red;
+	margin-left: 3px;
+}
+._up{
+	color: #539653;
+}
+._down{
+	color: #c34848;
+}

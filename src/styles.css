@@ -1,0 +1,13 @@
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-track {
+  background: none; 
+}
+::-webkit-scrollbar-thumb {
+  background: none; 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: none; 
+}

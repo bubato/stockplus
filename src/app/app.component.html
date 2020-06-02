@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="header-bar">
+  <div class="pro-top logo">  
+    <a id="logo-img" href="#">
+      <img src="assets/image/logo.png" width="200" height="40">
+    </a>
+  </div>
+  <div class="pro-top center-header">
+     <app-pro-top></app-pro-top>
+  </div>
+  <div class="pro-top right-header">
+    <a href="">
+     <img src="assets/image/account-icon.png" width="20" height="20">
+     <label>Premium Account</label>
+    </a>
+    <a href="">|</a>
+    <a href=""> 
+     <img src="assets/image/help-icon.png" width="20" height="20">
+     <label>Help</label> 
+    </a>
+    <a href="">    
+     <img src="assets/image/english-icon.png" width="20" height="20">
+     <label>English</label>
+    </a> 
+  </div>  
+</div>
+<div class="left-bar">
+  <div>
+    <img src="assets/image/left-bar/screen.png" (click)="toggle()" width="20" height="20">
+    <div class="add-tab" *ngIf="hidden_menu">
+      <div class="active-cyan-2">
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+        <img id="icon-search" src="assets/image/left-bar/search.png" width="20" height="20">
+      </div> 
+      <br>   
+      <div>
+        <ul>
+          <li><header>MARKET</header></li>
+          <li><a (click)="add('Watchlist')">Watchlist</a></li>
+          <li><a (click)="add('Indices')">Indices</a></li>
+          <li><a (click)="add('Top Movers')">Top Movers</a></li>
+          <li><a (click)="add('Trending Stocks')">Trending Stocks</a></li>
+          <li><a (click)="add('Market Calender')">Market Calender</a></li>
+          <li><a (click)="add('Heatmap')">Heatmap</a></li>
+          <li><a (click)="add('Money Flow')">Money Flow</a></li>
+          <li><a (click)="add('Market In-Depth')">Market In-Depth</a></li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li><header>PRICES</header></li>
+          <li><a (click)="add('Time & Sales')">Time & Sales</a></li>
+          <li><a (click)="add('Price Depth')">Price Depth</a></li>
+          <li><a (click)="add('Quote Movement')">Quote Movement</a></li>
+          <li><a (click)="add('Price Data')">Price Data</a></li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li><header>TECHNICALS</header></li>
+          <li><a (click)="add('Chartings')">Chartings</a></li>
+          <li><a (click)="add('Trigger Alerts')">Trigger Alerts</a></li>
+          <li><a (click)="add('Technical Analysis Signals')">Technical Analysis Signals</a></li>
+          
+        </ul>
+      </div>  
+                
+    </div>
+  </div> 
+  <div>
+    <img src="assets/image/left-bar/multitab.png" width="20" height="20">
+  </div> 
+  <div>
+    <img src="assets/image/left-bar/save.png" width="20" height="20">
+  </div> 
+  <div>
+    <img src="assets/image/left-bar/sync.png" width="20" height="20">
+  </div> 
+  <div>
+    <img src="assets/image/left-bar/newtab.png" width="20" height="20">
+  </div> 
+  <div>
+    <img src="assets/image/left-bar/setting.png" width="20" height="20">
+  </div>            
+</div>
+<div id="simpleList" class="list-group">
+  <div class="inline" *ngFor="let tab of tab_arr">
+    <app-main-body (close)="onClose($event)" [style.display]="tab.check_tab == this.view_current ? 'inline-flex':'none'" [name]="tab.name" [id]="tab.id"></app-main-body>
+  </div>  
+</div>
+<div class="footer-bar">
+  <div class="left-footer">
+     <div id="add_view" *ngFor="let _tab of number_tab ;let i = index">
+        <div class="view" id="{{i+1}}" (click)="pointer(i+1)">{{_tab}}</div>
+     </div>  
+     <img class="btn-add"src="assets/image/footer-bar/add.png" width="10" height="10" data-toggle="modal" data-target="#popup-add">  
+  </div>
+  <div class="right-footer">
+     <div class="push"></div>
+     <div class="time-closed">VN Market Close 15:15:25</div>
+     <a class="connect-status">
+        <img src="assets/image/footer-bar/green-dot.png" width="6" height="6">
+        <div class="connect"> Connected</div>
+     </a>    
+     <a href=""><img id="btn-resize" src="assets/image/footer-bar/zoom-full.png" width="15" height="15"></a>
+        
+  </div>
+</div>
+
+<div class="modal fade" id="popup-add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> Add a view tab</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        Name your new work space : 
+      </div>
+      <input type="text" class="form-control" [(ngModel)]="_text">
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="add_view()">Add</button>
+      </div>
+    </div>
+  </div>
+</div> 
+
+
+
+</body>
+
+</html>
